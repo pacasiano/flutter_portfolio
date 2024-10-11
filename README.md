@@ -1,3 +1,3 @@
-# cs3_portfolio
+# Flutter Portfolio
 
-A new Flutter project.
+A Portfolio app made with Flutter.
