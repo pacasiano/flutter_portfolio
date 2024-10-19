@@ -3,7 +3,9 @@ import 'package:cs3_portfolio/components/drawer_button.dart' as custom;
 
 class DrawerMobile extends StatefulWidget {
   final List<Map<String, String>> links;
-  const DrawerMobile({super.key, required this.links});
+  final Function(String section) scrollToSection;
+
+  const DrawerMobile({super.key, required this.links, required this.scrollToSection});
 
   @override
   State<DrawerMobile> createState() => _DrawerMobileState();
@@ -39,7 +41,8 @@ class _DrawerMobileState extends State<DrawerMobile> {
               child: Column(
                 children: [
                   for (var link in widget.links)
-                    custom.DrawerButton(data: link),
+                    custom.DrawerButton(data: link, onPressed: () => widget.scrollToSection(link['section']!),),
+                    
                 ],
               ),
             ),

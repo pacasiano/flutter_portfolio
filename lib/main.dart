@@ -1,6 +1,4 @@
-import 'package:cs3_portfolio/screens/about.dart';
 import 'package:cs3_portfolio/screens/home.dart';
-import 'package:cs3_portfolio/screens/projects.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +16,8 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           titleTextStyle: TextStyle(color: Colors.white),
           iconTheme: IconThemeData(color: Colors.white),
         ),
@@ -46,8 +45,6 @@ class MainApp extends StatelessWidget {
       home: const MyHome(),
       routes: {
         '/home': (context) => const MyHome(),
-        '/projects': (context) => const MyProjects(),
-        '/about': (context) => const MyAbout(),
       },
     );
   }

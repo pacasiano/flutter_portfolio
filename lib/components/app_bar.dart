@@ -1,15 +1,16 @@
 import 'package:cs3_portfolio/components/hover_textbutton.dart';
 import 'package:flutter/material.dart';
 
+
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final List<Map<String, String>> links;
+  final Function(String section) scrollToSection;
 
-  const MyAppBar({super.key, required this.links});
+  const MyAppBar({super.key, required this.links, required this.scrollToSection});
 
   @override
   MyAppBarState createState() => MyAppBarState();
 
-  // Implement the preferredSize getter to specify the height of the AppBar
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
@@ -30,12 +31,15 @@ class MyAppBarState extends State<MyAppBar> {
             ],
           ),
           SizedBox(
-            width: 600,
+            width: 250,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 for (var link in widget.links)
-                  HoverTextButton(link: link),
+                  HoverTextButton(
+                    link: link,
+                    onPressed: () => widget.scrollToSection(link['section']!),
+                  ),
               ],
             ),
           )

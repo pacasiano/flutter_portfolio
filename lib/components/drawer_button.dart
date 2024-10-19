@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerButton extends StatefulWidget {
   final Map<String, String> data;
-  const DrawerButton({super.key, required this.data});
+  final VoidCallback onPressed;
+
+  const DrawerButton({super.key, required this.data, required this.onPressed});
 
   @override
   State<DrawerButton> createState() => _DrawerButtonState();
@@ -54,7 +56,7 @@ class _DrawerButtonState extends State<DrawerButton> {
               ],
             ),
           ),
-          onTap: () => Navigator.pushReplacementNamed(context, widget.data['link']!),
+          onTap: widget.onPressed,
         ),
       ),
     );

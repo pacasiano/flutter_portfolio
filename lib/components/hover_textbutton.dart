@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class HoverTextButton extends StatefulWidget {
   final Map<String, String> link;
+  final VoidCallback onPressed;
 
-  const HoverTextButton({super.key, required this.link});
+  const HoverTextButton({super.key, required this.link, required this.onPressed});
 
   @override
   HoverTextButtonState createState() => HoverTextButtonState();
@@ -21,21 +22,26 @@ class HoverTextButtonState extends State<HoverTextButton> {
         style: TextButton.styleFrom(
           foregroundColor: Colors.white,
           overlayColor: Colors.transparent,
-          side: widget.link['border'] == 'true' ? const BorderSide(
-            color: Colors.red,
-            width: 1.5,
-          ): null,
-          shape: widget.link['border'] == 'true' ? RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ): null,
+          side: _isHovered == true
+              ? const BorderSide(
+                  color: Colors.red,
+                  width: 1.5,
+                )
+              : null,
+          shape: _isHovered == true
+              ? RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                )
+              : null,
         ),
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, widget.link['link']!);
-        },
-        child: Text(widget.link['name']!, style: TextStyle(
-          fontSize: 15,
-          fontWeight: _isHovered ? FontWeight.w200 : FontWeight.w100,
-        )),
+        onPressed: widget.onPressed, // Use the onPressed callback here
+        child: Text(
+          widget.link['name']!,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: _isHovered ? FontWeight.w200 : FontWeight.w100,
+          ),
+        ),
       ),
     );
   }

@@ -1,19 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // Assuming HoverTextButton is defined here
 
 class AppBarMobile extends StatefulWidget implements PreferredSizeWidget {
-  final List<Map<String, String>> links;
 
-  const AppBarMobile({super.key, required this.links});
+  const AppBarMobile({super.key});
 
   @override
-  MyAppBarState createState() => MyAppBarState();
+  // ignore: library_private_types_in_public_api
+  _AppBarMobileState createState() => _AppBarMobileState();
 
-  // Implement the preferredSize getter to specify the height of the AppBar
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class MyAppBarState extends State<AppBarMobile> {
+class _AppBarMobileState extends State<AppBarMobile> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
